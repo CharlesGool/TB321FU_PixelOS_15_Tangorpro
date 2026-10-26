@@ -7,7 +7,11 @@
 修改自 [Mystic-GSI](https://sourceforge.net/projects/mystic-gsi-updates/), 原机型为 Pixel Tablet(代号 tangorpro),
 底包 `Pixel-tangorpro-15-12366759-AB-20241019-MysticGSI`(Android 15, AP3A.241005.015)。
 
-和 main 分支的 V6 相比: 加了人脸解锁(ParanoidSense + Megvii 旷视 SDK, WEAK/Class 2 生物识别, 走前置摄像头)。
+和 [TB321FU_PixelOS_15_Komodo](https://github.com/CharlesGool/TB321FU_PixelOS_15_Komodo) 相比: 底包是平板专用的, 不是手机的 GSI,
+所以 UI 错位几乎没有; 这台机器不支持但系统仍然暴露在设置/状态栏里的功能也更少(V6 又进一步删掉了 Hub 底座、侧边指纹界面、Pixel 屏幕强光模式、UV 统计、Pixel 基带服务)。
+另外**修好了自动亮度和蓝牙音频**, 用 EROFS 打包。
+
+和本仓库 main 分支的 V6 相比: 加了人脸解锁(ParanoidSense + Megvii 旷视 SDK, WEAK/Class 2 生物识别, 走前置摄像头)。
 其它(V2 的深度精简、V3 的两个崩溃修复、V4 的相机库挂载清理、V5 的横屏方向修复、V6 的硬件不支持组件删除、自动亮度、蓝牙耳机、
 蓝牙通话修复)都在。
 
