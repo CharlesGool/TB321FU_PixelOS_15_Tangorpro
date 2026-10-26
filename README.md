@@ -23,6 +23,7 @@ Bug:
 8. **修复蓝牙通话**: 戴蓝牙耳机通话时一开始双方听不到、麦克风用的是平板麦克风的问题
 9. 使用 EROFS(lz4hc)打包, 镜像只有 1.9 GB
 10. 修复 Pixel Tablet 专属服务在这台机器上反复停止运行的问题(设备连接服务; UWB 服务直接删掉, 这台机器没有 UWB)
+11. 去掉 GSI 把相机库复制到可写 tmpfs 再挂到 /vendor 上的多余挂载(这个库在这台机器上不需要修改)
 
 工作的硬件:
 
@@ -46,7 +47,7 @@ Bug:
 5. 享受它!
 
 ```
-fastboot flash system Pixel-tangorpro-15_TB321FU_V3_erofs_raw_Signed.img
+fastboot flash system Pixel-tangorpro-15_TB321FU_V4_erofs_raw_Signed.img
 fastboot -w
 fastboot reboot
 ```
@@ -55,5 +56,6 @@ fastboot reboot
 
 更新日志:
 
+- V4: 去掉相机库 com.qti.chi.override.so 多余的可写 tmpfs 挂载, 检测软件不再报系统分区挂载篡改。从 V3 升级不需要清数据
 - V3: 修复"设备连接服务已停止运行"反复弹出, 以及 UWB 服务在后台反复崩溃。从 V2 升级不需要清数据
 - V2: 首个公开版本
