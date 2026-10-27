@@ -21,9 +21,13 @@ Bug:
 6. **修复自动亮度**: 加入 TB321FU 专用 overlay, 亮度曲线取自原厂 ZUI
 7. **修复蓝牙耳机**: 部分耳机没声音、声音从平板扬声器出来的问题。A2DP 不再走高通硬件 offload, 改走原厂 vendor 的软件编码
 8. **修复蓝牙通话**: 戴蓝牙耳机通话时一开始双方听不到、麦克风用的是平板麦克风的问题
+
+   7、8 两项的原因和改法见 [tb321fu-bt-audio-fix](https://github.com/CharlesGool/tb321fu-bt-audio-fix), 刷别的 GSI 也可以装它的 KSU 模块
 9. 使用 EROFS(lz4hc)打包, 镜像只有 1.9 GB
 10. 修复 Pixel Tablet 专属服务在这台机器上反复停止运行的问题(设备连接服务; UWB 服务直接删掉, 这台机器没有 UWB)
 11. 去掉 GSI 把相机库复制到可写 tmpfs 再挂到 /vendor 上的多余挂载(这个库在这台机器上不需要修改)
+
+带人脸解锁的版本在 [`faceunlock` 分支](https://github.com/CharlesGool/TB321FU_PixelOS_15_Tangorpro/tree/faceunlock), 移植的源码和构建脚本在 [paranoidsense-gsi-port](https://github.com/CharlesGool/paranoidsense-gsi-port)。
 
 工作的硬件:
 
