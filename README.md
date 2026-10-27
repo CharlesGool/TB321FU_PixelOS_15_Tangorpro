@@ -22,12 +22,12 @@ PixelOS 原版的 ParanoidSense 要配 ROM 一起编, 用 Google 的 platform �
 
 - ParanoidSense 应用自签名、跑在普通 priv-app uid, 不再要 platform 签名
 - 底包 `USE_BIOMETRIC_INTERNAL` 和 `MANAGE_BIOMETRIC` 两个权限都是 signature protection(不是 signature\|privileged),
-  privapp 白名单给不了。改过的 `services.jar` 把 Face/Biometric/Auth 服务里 56 处权限校验改走一个 helper:
+  privapp 白名单给不了。改过的 `services.jar` 把生物识别服务里 57 处权限校验改走一个 helper:
   调用方是系统 priv-app `co.aospa.sense` 就放行
 - `SenseService` 用 `BIND_FOREGROUND_SERVICE | BIND_INCLUDE_CAPABILITIES` 绑, 避开 CAMERA foreground-only 限制
 - 录入界面去掉了 Google 的 setupdesign/setupcompat 依赖, 换成标准 Android 组件
 
-构建过程、每一步的具体改法, 以及一到五版 KSU 模块的调试记录, 都在同一个 GSI 项目的 `faceunlock/README.md` 里。
+源码、构建脚本和每一步的具体改法单独开源在 [paranoidsense-gsi-port](https://github.com/CharlesGool/paranoidsense-gsi-port), 可以移植到别的 Android 15 GSI。
 
 ## Bug
 
@@ -45,6 +45,8 @@ PixelOS 原版的 ParanoidSense 要配 ROM 一起编, 用 Google 的 platform �
 6. **修复自动亮度**: 加入 TB321FU 专用 overlay, 亮度曲线取自原厂 ZUI
 7. **修复蓝牙耳机**: 部分耳机没声音、声音从平板扬声器出来的问题。A2DP 不再走高通硬件 offload, 改走原厂 vendor 的软件编码
 8. **修复蓝牙通话**: 戴蓝牙耳机通话时一开始双方听不到、麦克风用的是平板麦克风的问题
+
+   7、8 两项的原因和改法见 [tb321fu-bt-audio-fix](https://github.com/CharlesGool/tb321fu-bt-audio-fix), 刷别的 GSI 也可以装它的 KSU 模块
 9. 使用 EROFS(lz4hc)打包, 镜像只有 1.8 GB
 10. 修复 Pixel Tablet 专属服务在这台机器上反复停止运行的问题(设备连接服务; UWB 服务直接删掉, 这台机器没有 UWB)
 11. 去掉 GSI 把相机库复制到可写 tmpfs 再挂到 /vendor 上的多余挂载(这个库在这台机器上不需要修改)
