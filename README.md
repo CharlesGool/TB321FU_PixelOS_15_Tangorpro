@@ -43,6 +43,8 @@ PixelOS 原版的 ParanoidSense 要配 ROM 一起编, 用 Google 的 platform �
    Gmail、地图、相册等都删了, 需要的话从 Play 商店装回来(删了 Google App 后桌面搜索栏和圈定即搜要装回 Google 才能用)
 5. 默认显示 WLAN 热点(Pixel Tablet 原本把热点入口藏了)
 6. **修复自动亮度**: 加入 TB321FU 专用 overlay, 亮度曲线取自原厂 ZUI
+
+   原因和改法见 [tb321fu-brightness-overlay](https://github.com/CharlesGool/tb321fu-brightness-overlay), 刷别的 GSI 也可以装它的 KSU 模块
 7. **修复蓝牙耳机**: 部分耳机没声音、声音从平板扬声器出来的问题。A2DP 不再走高通硬件 offload, 改走原厂 vendor 的软件编码
 8. **修复蓝牙通话**: 戴蓝牙耳机通话时一开始双方听不到、麦克风用的是平板麦克风的问题
 
